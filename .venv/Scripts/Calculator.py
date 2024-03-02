@@ -29,6 +29,10 @@ class Calculator:
             a, b = b, a % b
         return a
 
+    @staticmethod
+    def lcm(a, b):
+        return abs(a * b) // Calculator.gcd(a, b)
+
 class TestCalculator(unittest.TestCase):
     def test_add(self):
         # Arrange
@@ -110,6 +114,18 @@ class TestCalculator(unittest.TestCase):
 
         # Assert
         self.assertEqual(result, expected_result, "GCD is not calculated correctly")
+
+    def test_lcm(self):
+        # Arrange
+        a = 12
+        b = 18
+        expected_result = 36
+
+        # Act
+        result = Calculator.lcm(a, b)
+
+        # Assert
+        self.assertEqual(result, expected_result, "LCM is not calculated correctly")
 
 if __name__ == '__main__':
     unittest.main()

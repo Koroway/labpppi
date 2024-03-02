@@ -23,6 +23,12 @@ class Calculator:
     def power(a, b):
         return a ** b
 
+    @staticmethod
+    def gcd(a, b):
+        while b != 0:
+            a, b = b, a % b
+        return a
+
 class TestCalculator(unittest.TestCase):
     def test_add(self):
         # Arrange
@@ -92,6 +98,18 @@ class TestCalculator(unittest.TestCase):
 
         # Assert
         self.assertEqual(result, expected_result, "Power is not calculated correctly")
+
+    def test_gcd(self):
+        # Arrange
+        a = 24
+        b = 36
+        expected_result = 12
+
+        # Act
+        result = Calculator.gcd(a, b)
+
+        # Assert
+        self.assertEqual(result, expected_result, "GCD is not calculated correctly")
 
 if __name__ == '__main__':
     unittest.main()

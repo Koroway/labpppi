@@ -19,6 +19,9 @@ class Calculator:
             raise ValueError("Division by zero is undefined")
         return a / b
 
+    @staticmethod
+    def power(a, b):
+        return a ** b
 
 class TestCalculator(unittest.TestCase):
     def test_add(self):
@@ -77,6 +80,18 @@ class TestCalculator(unittest.TestCase):
         # Act & Assert
         with self.assertRaises(ValueError):
             Calculator.divide(a, b)
+
+    def test_power(self):
+        # Arrange
+        base = 2
+        exponent = 3
+        expected_result = 8
+
+        # Act
+        result = Calculator.power(base, exponent)
+
+        # Assert
+        self.assertEqual(result, expected_result, "Power is not calculated correctly")
 
 if __name__ == '__main__':
     unittest.main()

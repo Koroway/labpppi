@@ -21,6 +21,8 @@ class Calculator:
 
     @staticmethod
     def power(a, b):
+        if a == 0 and b == 0:
+            raise ArithmeticError("0 raised to the power of 0 is undefined")
         return a ** b
 
     @staticmethod
@@ -84,7 +86,7 @@ class TestCalculator(unittest.TestCase):
 
     def test_divide_by_zero(self):
         # Arrange
-        a = 10
+        a = 20
         b = 0
 
         # Act & Assert
@@ -102,6 +104,11 @@ class TestCalculator(unittest.TestCase):
 
         # Assert
         self.assertEqual(result, expected_result, "Power is not calculated correctly")
+
+    def test_power_zero_to_zero_exception(self):
+        # Act & Assert
+        with self.assertRaises(ArithmeticError):
+            Calculator.power(0, 0)
 
     def test_gcd(self):
         # Arrange

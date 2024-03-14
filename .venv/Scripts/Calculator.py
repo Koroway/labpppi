@@ -111,5 +111,8 @@ class TestCalculator(unittest.TestCase):
         # Assert
         self.assertEqual(result, expected_result, "GCD is not calculated correctly")
 
+        def new_commit():
+            return
+
 if __name__ == '__main__':
     unittest.main()
